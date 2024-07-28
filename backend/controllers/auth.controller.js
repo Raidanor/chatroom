@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import bcryptjs from "bcryptjs"
 
 export const signup = async(req, res) => {
     try
@@ -7,7 +8,7 @@ export const signup = async(req, res) => {
 
         if (password !== confirmPassword)
         {
-            return res.status(400).json({error: "Passwords do not match"})
+            return res.status(400).json( {error: "Passwords do not match"} )
         }
 
         const user = await User.findOne({username})
@@ -37,6 +38,7 @@ export const signup = async(req, res) => {
         
         await newUser.save();
 
+
         res.status(201).json({
             _id: newUser._id,
             fullname: newUser.fullname,
@@ -48,7 +50,7 @@ export const signup = async(req, res) => {
     catch(error)
     {
         console.log("Error in signup controller", error.message);
-        res.status(500).json({error: "Internal Server Error"})
+        res.status(500).json({error: "Internal Server Error lol (check console)"})
     }
 }
 

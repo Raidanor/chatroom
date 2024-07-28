@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // 
 
-app.use("/api/auth", authRoutes); //to parse the incoming requests qith JSON payloads (from req.body)
+app.use("/api/auth", authRoutes); //to parse the incoming requests with JSON payloads (from req.body)
 
 // app.get("/", (req, res) => 
 // {
