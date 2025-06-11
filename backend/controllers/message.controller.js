@@ -1,20 +1,21 @@
 import Conversation from "../models/conversation.model.js"
+import Message from "../models/message.model.js"
 
 export const sendMessage = async (req, res) =>
 {
     try
     {
         const { message } = req.body
-        const { id } = req.params
-        const { senderId } = req.user._Id
+        const { id: receiverId } = req.params
+        const senderId = req.user._Id
 
         let conversation = await Conversation.findOne({
             participants: { $all: [senderId, receiverId]},
         })
 
         if (!conversation) {
-            consversation = await Conversation.create({
-                participant: [senderId, receiverId],
+            conversation = await Conversation.create({
+                participants: [senderId, receiverId],
 
             })
         }

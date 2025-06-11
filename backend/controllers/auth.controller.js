@@ -73,7 +73,6 @@ export const login = async (req, res) => {
     try{
         const {username, password} = req.body;
 
-
         const user = await User.findOne({username})
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || "")
 
@@ -84,14 +83,12 @@ export const login = async (req, res) => {
 
         generateTokenAndSetCookie(user._id, res)
 
-
         res.status(200).json({
             _id: user._id,
             fullname: user.fullname,
             username : user.username,
             profilePic: user.profilePic
         })
-
     }
     catch (error)
     {

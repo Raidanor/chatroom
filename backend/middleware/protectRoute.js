@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import User from "../models/user.model.js"
 
-const protectRoute = async (req, res) => 
+const protectRoute = async (req, res, next) => 
 {
     try {
         const token = req.cookies.jwt
@@ -23,8 +23,10 @@ const protectRoute = async (req, res) =>
         {
             return res.status(404).json( { error: "User Not Found"})
         }
+
         req.user = user
         next()
+
     }
     catch (error)
     {
