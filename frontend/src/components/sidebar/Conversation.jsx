@@ -11,7 +11,7 @@ const Conversation = () => {
                 </div>
                 <div className='flex flex-col flex-1'>
                     <div className='flex-gap-3 justify-between'>
-                        <p className='font-bold ttex-gray-200 '>Username </p>
+                        <p className='font-bold text-gray-600 '>Username </p>
                         <span>emoji</span>
                     </div>
                 </div>
