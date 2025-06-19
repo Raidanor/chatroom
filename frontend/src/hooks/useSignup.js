@@ -8,7 +8,6 @@ const useSignup = () => {
 
     const signup = async({fullname, username, password, confirmPassword, gender}) => {
         const success = handleInputErrors({fullname, username, password, confirmPassword, gender})
-
         if (!success) return
 
         setLoading(true)
